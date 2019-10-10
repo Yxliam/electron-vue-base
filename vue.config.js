@@ -6,12 +6,6 @@ const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
 const isProduction = process.env.NODE_ENV === "production";
 
 // cdn预加载使用
-const externals = {
-  vue: "Vue",
-  "vue-router": "VueRouter",
-  vuex: "Vuex",
-  axios: "axios"
-};
 const cdn = {
   // 开发环境
   dev: {
@@ -52,6 +46,39 @@ module.exports = {
     proxy: ""
   },
 
+  pluginOptions: {
+    electronBuilder: {
+      builderOptions: {
+        appId: "com.example.app",
+        productName: "eTest", //项目名，也是生成的安装文件名，即aDemo.exe
+        copyright: "Copyright © 2019", //版权信息
+        win: {
+          //win相关配置
+          icon: "./logo.ico",
+          target: [
+            {
+              target: "nsis", //利用nsis制作安装程序
+              arch: [
+                "x64" //64位
+              ]
+            }
+          ]
+        },
+        nsis: {
+          oneClick: false, // 是否一键安装
+          allowElevation: true, // 允许请求提升。 如果为false，则用户必须使用提升的权限重新启动安装程序。
+          allowToChangeInstallationDirectory: true, // 允许修改安装目录
+          installerIcon: "./logo.ico", // 安装图标
+          uninstallerIcon: "./logo.ico", //卸载图标
+          installerHeaderIcon: "./logo.ico", // 安装时头部图标
+          createDesktopShortcut: true, // 创建桌面图标
+          createStartMenuShortcut: true, // 创建开始菜单图标
+          shortcutName: "测试" // 图标名称
+        }
+      }
+    }
+  },
+
   chainWebpack: config => {
     config.plugin("html").tap(args => {
       if (process.env.NODE_ENV === "production") {
@@ -71,10 +98,6 @@ module.exports = {
   configureWebpack: config => {
     // 生产环境打包分析体积
     if (isProduction) {
-      // externals里的模块不打包
-      Object.assign(config, {
-        externals: externals
-      });
       // 上线压缩去除console等信息
       config.optimization.minimizer[0].options.terserOptions.compress.drop_console = true;
       // 开启gzip压缩

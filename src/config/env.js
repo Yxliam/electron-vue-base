@@ -8,15 +8,14 @@
  */
 
 const dev = {
-    routerMode: 'history', // hash
-
-    /* beta */
-    baseUrl: `${location.origin}`,         // 自定义反向代理
-    credential: true,
+  routerMode: "hash", // hash
+  /* beta */
+  baseUrl: `${location.origin}`, // 自定义反向代理
+  credential: true
 };
 
 const prod = {
-    ...dev,
+  ...dev
 };
 
-export default process.env.NODE_ENV === 'development' ? dev : prod;
+export default process.env.NODE_ENV === "development" ? dev : prod;

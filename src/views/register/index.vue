@@ -3,20 +3,19 @@
         <div class="logo-box">
             <img src="../../assets/logo.png" alt="">
         </div>
-        <LoginForm title="密码登录">
+        <LoginForm title="注册会员">
             <div slot="content">
                 <Input placeholder="邮箱"/>
+                <Input class="mt10" placeholder="昵称(创建后可修改)"/>
                 <Input class="mt10" type="password" placeholder="密码"/>
             </div>
              <div slot="tip">
                <div class="tip-right">
-                   <router-link class="link" to="">忘记密码</router-link>
-                   <span class="line">|</span>
-                   <router-link class="link" to="/register">注册会员</router-link>
+                   <router-link class="link" to="/">有账号?去登录</router-link>
                </div>
             </div>
             <div slot="button">
-                <Button type="primary" size="large" long>登录</Button>
+                <Button type="primary" size="large" long>立即注册</Button>
             </div>
         </LoginForm>
     </div>

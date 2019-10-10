@@ -4,6 +4,7 @@ import Router from "vue-router";
 // 按需（懒）加载（vue实现）
 const Home = () => import("../views/home/");
 const Login = () => import("../views/login/");
+const Register = () => import("../views/register/");
 
 Vue.use(Router);
 
@@ -20,6 +21,11 @@ const router = new Router({
       path: "/",
       name: "login",
       component: Login
+    },
+    {
+      path: "/register",
+      name: "register",
+      component: Register
     },
     {
       path: "*",
