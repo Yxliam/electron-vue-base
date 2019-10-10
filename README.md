@@ -1,29 +1,12 @@
-# elect-dmeo
+# electron-vue-base
 
-## Project setup
-```
-npm install
-```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+###  启动项目electron
 
-### Run your tests
-```
-npm run test
-```
+npm run electron:serve
 
-### Lints and fixes files
-```
-npm run lint
-```
+###  构建项目electron
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+npm run electron:build
+
